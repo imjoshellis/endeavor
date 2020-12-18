@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import './App.css'
+import Controls from './components/Controls'
+import Grid from './components/Grid'
+import { latestMags } from './data'
 
-function App() {
+function App () {
+  const [width, setWidth] = useState(800)
+  const [amount, setAmount] = useState(13)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <Controls
+        amount={amount}
+        setAmount={setAmount}
+        width={width}
+        setWidth={setWidth}
+      />
+      <Grid magazines={latestMags} width={width} amount={amount} />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
